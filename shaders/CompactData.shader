@@ -1,8 +1,8 @@
-﻿Shader "d4rkpl4y3r/CompactSparseTexture/Compact"
+﻿Shader "d4rkpl4y3r/CompactSparseTexture/Compact Texels"
 {
 	Properties
 	{
-		_DataTex("Particle Texture", 2D) = "black" {}
+		_DataTex("Sparse Texture", 2D) = "black" {}
 		_ActiveTexelMap("Active Texel Map", 2D) = "black" {}
 		[Toggle(Z_ORDER_CURVE)] _ZOrderCurve("Z Order Curve", Int) = 0
 	}
@@ -53,13 +53,6 @@
 				tristream.Append(o);
 				o.pos = float4(1, -3, 1, 1);
 				tristream.Append(o);
-			}
-
-			uint pcg_hash(uint seed)
-			{
-				uint state = seed * 747796405u + 2891336453u;
-				uint word = ((state >> ((state >> 28u) + 4u)) ^ state) * 277803737u;
-				return (word >> 22u) ^ word;
 			}
 			
 			// adapted from: https://lemire.me/blog/2018/01/08/how-fast-can-you-bit-interleave-32-bit-integers/
