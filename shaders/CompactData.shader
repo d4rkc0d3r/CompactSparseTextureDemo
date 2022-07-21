@@ -122,21 +122,21 @@
 					bool in10 = index < (activeTexelSumInPreviousLods + count00 + count01 + count10);
 					if (in00)
 					{
-						
+						uv.xy += int2(0, 0);
 					}
 					else if (in01)
 					{
-						uv.x += 1;
+						uv.xy += int2(1, 0);
 						activeTexelSumInPreviousLods += count00;
 					}
 					else if (in10)
 					{
-						uv.y += 1;
+						uv.xy += int2(0, 1);
 						activeTexelSumInPreviousLods += count00 + count01;
 					}
 					else
 					{
-						uv.xy += 1;
+						uv.xy += int2(1, 1);
 						activeTexelSumInPreviousLods += count00 + count01 + count10;
 					}
 				}
