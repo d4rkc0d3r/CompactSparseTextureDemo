@@ -103,7 +103,7 @@
 
 			float CountActiveTexels(int3 uv, int2 offset)
 			{
-				return (float)(1 << (uv.z + uv.z)) * _ActiveParticleMap.Load(uv, offset);
+				return (float)(1 << (uv.z + uv.z)) * _ActiveTexelMap.Load(uv, offset);
 			}
 
 			float CountActiveTexels(int3 uv)
