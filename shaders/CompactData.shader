@@ -111,9 +111,9 @@
 				if (index >= CountActiveTexels(uv))
 					return -1;
 				float activeTexelSumInPreviousLods = 0;
-				uv.z -= 1;
 				while (uv.z >= 1)
 				{
+					uv += int3(uv.xy, -1);
 					float count00 = CountActiveTexels(uv);
 					float count01 = CountActiveTexels(uv, int2(1, 0));
 					float count10 = CountActiveTexels(uv, int2(0, 1));
@@ -139,29 +139,6 @@
 						uv.xy += 1;
 						activeTexelSumInPreviousLods += count00 + count01 + count10;
 					}
-					uv += int3(uv.xy, -1);
-				}
-				float count00 = CountActiveTexels(uv);
-				float count01 = CountActiveTexels(uv, int2(1, 0));
-				float count10 = CountActiveTexels(uv, int2(0, 1));
-				bool in00 = (index + 1) == (activeTexelSumInPreviousLods + count00);
-				bool in01 = (index + 1) == (activeTexelSumInPreviousLods + count00 + count01);
-				bool in10 = (index + 1) == (activeTexelSumInPreviousLods + count00 + count01 + count10);
-				if (in00)
-				{
-					
-				}
-				else if (in01)
-				{
-					uv.x += 1;
-				}
-				else if (in10)
-				{
-					uv.y += 1;
-				}
-				else
-				{
-					uv.xy += 1;
 				}
 				return uv.xy;
 			}
