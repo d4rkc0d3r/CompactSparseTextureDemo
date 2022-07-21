@@ -9,7 +9,7 @@ Then you write a value of 1.0 for any active pixel in the sparse texture and 0.0
 
 ![ActivePixels](./screenshots/activeMapMips.png)
 
-With that we can make an algorithm to find the nth active pixel. We start at the maxMipLevel - 1 and work our way down. In each level we check 3 pixels. We can skip the 4th pixel check since we know that we have to be in there if we weren't in the first 3. The order is bottom left, bottom right, top left & finally top right.  
+With that we can make an [algorithm to find the nth active pixel](https://github.com/d4rkc0d3r/CompactSparseTextureDemo/blob/main/shaders/CompactData.shader#L107). We start at the maxMipLevel - 1 and work our way down. In each level we check 3 pixels. We can skip the 4th pixel check since we know that we have to be in there if we weren't in the first 3. The order is bottom left, bottom right, top left & finally top right.  
 This traversal is equivalent to the [ZOrder curve](https://en.wikipedia.org/wiki/Z-order_curve). Therefore if we want a stable output order our 1D index has to be the ZOrder curve instead of the straight forward row by row traversal.
 
 ![ZOrder](./screenshots/rowVSZOrder.png)
